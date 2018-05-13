@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"><head><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-115036541-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){
+	dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'UA-115036541-1');
+</script><script type="application/ld+json">{
+	"@context": "http://schema.org",
+	"@type" : "Person",
+	"name" : "Simon Baev",
+	"telephone": "+1 (229) 942-5511",
+	"email": "simonbaev@gmail.com",
+	"description": "Fullstack web developer",
+	"url": "https://baev.work",
+	"image": "https://baev.work/images/simon_1920.png"
+}</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="theme-color" content="rgba(0,0,0,0)"><meta name="description" content="author: Simon Baev, category: professional portfolio, area: full stack web developer, cv, project, about"><meta name="google-site-verification" content="81IXiucozgdlpHMiS9uCCgF2EIM1xcfOsD6iZR6DiC4"><title>Simon Baev's Portfolio (One Recent Project...)</title><link rel="shortcut icon" href="/images/simon_192.png"><link rel="manifest" href="/manifest.json"><link async rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><link async rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"><link async rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"><link rel="stylesheet" href="/css/common.css"><meta http-equiv="Cache-control" content="no-cache"><link rel="stylesheet" href="/css/others.css"></head><body><nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light d-flex d-print-flex justify-content-between"><a class="navbar-brand" href="/" aria-label="Go to the landing page"><span>Simon Baev's Portfolio </span></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse justify-content-end" id="navbar-content"><div class="navbar-nav"><a class="nav-item-cv nav-item nav-link ml-auto" href="/cv/">CV</a><a class="btn nav-item nav-link disabled d-none d-sm-inline-block" href="">|</a><a class="nav-item-about nav-item nav-link ml-auto" href="/about/">About Me</a><a class="btn nav-item nav-link disabled d-none d-sm-inline-block" href="">|</a><a class="nav-item-project nav-item nav-link ml-auto" href="/project/">One recent project...</a></div></div></nav><div class="container mt-3 py-3"><!-- TOC depthFrom:2 insertAnchor:true -->
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#preliminary-development-phases">Preliminary Development Phases</a><ul>
+<li><a href="#year-1">Year 1</a></li>
+<li><a href="#year-2">Year 2</a></li>
+</ul>
+</li>
+<li><a href="#the-hmt-project">The HMT Project</a><ul>
+<li><a href="#technology">Technology</a></li>
+<li><a href="#urls-and-deployment">URLs and deployment</a></li>
+<li><a href="#normal-user-workflow">Normal user workflow</a></li>
+<li><a href="#admin-user-workflow">Admin user workflow</a><ul>
+<li><a href="#admin-role">Admin role</a></li>
+<li><a href="#access-of-the-admin-interface">Access of the admin interface</a></li>
+<li><a href="#authentication-mechanism">Authentication mechanism</a></li>
+<li><a href="#admin-interface-features">Admin interface features</a></li>
+</ul>
+</li>
+<li><a href="#responsive-design">Responsive design</a></li>
+<li><a href="#known-issues">Known issues</a></li>
+</ul>
+</li>
+<li><a href="#pitron-mdash-scantron-driven-by-raspi">piTron &mdash; Scantron driven by RasPi</a></li>
+</ul>
+<!-- /TOC -->
+<p><hr></p>
+<h1 class="text-center"><small>Math Tournament <br class="d-sm-none">@ GSW<small></small></small></h1>
+
+<p><a id="markdown-introduction" name="introduction"></a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Every year, from 1974, the School of Computing and Mathematics at <strong>Georgia Southwestern State University</strong> (GSW) has hosted a tournament for high school students from throughout the State of Georgia. This tournament has brought hundreds of students to the campus in the early spring each year to compete with one another. The need to host hundreds of students at the same time while giving them opportunity to individually work on the same set of problems, and mainly important, to process their answers in quickest possible manner enforced us to run the tournament with the help of Scantron technology.</p>
+<p>Before I joined the project the following workflow was used:</p>
+<ul>
+<li>Team sponsor (one per School) filled in registration form hosted on GSW website</li>
+<li>An email with registration data was sent to organizers and a copy was sent to team sponsor</li>
+<li>Organizers manyally processed all registrations and for each student prepared an individualized Scantron sheet</li>
+<li>On the day of the event any modifications requiring update of Scantron sheets were made by handwriting</li>
+<li>Scantron sheets with answers were scanned using old Scantron machine connected to an old Windows 98 driven computer (existing Scantron software was incompatible with modern operating systems)</li>
+<li>A standalone C++ program (developed by another faculty) was used to process text files with scan data to prepare reports</li>
+<li>Reports were printed and handed to Team sponsors</li>
+<li>No centralized repository of tournament results for previous years was maintained</li>
+</ul>
+<p><a id="markdown-preliminary-development-phases" name="preliminary-development-phases"></a></p>
+<h2 id="Preliminary-Development-Phases"><a href="#Preliminary-Development-Phases" class="headerlink" title="Preliminary Development Phases"></a>Preliminary Development Phases</h2><p><a id="markdown-year-1" name="year-1"></a></p>
+<h3 id="Year-1"><a href="#Year-1" class="headerlink" title="Year 1"></a>Year 1</h3><p>I joined the project in 2015 and reworked the <em>registration form</em> to support <strong>front-end validation</strong>. It was the time when I just started learning web technology so I implemented the task using <a href="https://jqueryui.com/" target="_blank" rel="noopener">jQuery UI</a>. I ended up with constructing a landing page with modal dialog that was collecting form data and pushing it to PHP backend for processing. Our processing was as simple as it can be: (i) calculate the total cost; (ii) send out two customized  e-mails: one to team sponsor and one to organizers. </p>
+<p><a id="markdown-year-2" name="year-2"></a></p>
+<h3 id="Year-2"><a href="#Year-2" class="headerlink" title="Year 2"></a>Year 2</h3><p>I was told that the old Windows 98 PC that we use to control Scantron machine is about to die. I proposed replacing it by a RasPi board that would mimic proprietary Scantron protocol. Since Scantron and PC were connected by means of RS-232 interface I decided to try to sniff on their exchange. We’ve purchased a <a href="https://www.keelog.com/files/SerialGhostUsersGuide.pdf" target="_blank" rel="noopener">SerialGhost Pro</a> dongle and grabbed a few sessions where PC was controlling Scantron to handle a number of typical scanning scenarios including </p>
+<ul>
+<li>normal scan of a single sheet </li>
+<li>normal scan of a batch of sheets</li>
+<li>interrupted scan due to improper form orientation</li>
+<li>interrupted scan due to a paper jam </li>
+</ul>
+<p>The exchange protocol happend to be entirely text based, so I identified the bootstraping protocol, negotiation of form parameters, and the main part allowing to scan one or more sheets and recover in case of problems. At that time I started learning Node.js and decided to try <a href="https://www.npmjs.com/package/serialport" target="_blank" rel="noopener">SerialPort</a> package to control serial port exchange of the RasPi board. I ended up with a JavaScript class implementing basic logic of the underlying finite state machine. That class was then integrated into a Node.js console application. </p>
+<p>The implementation worked as expected and my next move was to <em>build a web interface</em> running off of RasPi, so we could control the Scantron in a bit more user friendlier manner. Since Node.js was already under the hood of the project, I added Express to serve static HTML5 bootstrap flavored frontend and used Socket.io to support asynchronous communication between the frontend (web UI) and the backend (Scantron controller class). After all programming improvements I packaged RasPi board into a touchscreen enabled case and that was a complete product… I thought it was. </p>
+<p>The last think to do was to replace the C++ program that was previously used to process scan data by a <em>web facing solution</em>, so I ended up with jQuery + Bootstrap HTML5 document, capable of <em>merging</em> and <em>processing</em> raw registration data along with scan data to generate persistent reports. </p>
+<p>Both RasPi scanner and report generator were tested during 2017 Math Tournament event and worked pretty well.  </p>
+<p><a id="markdown-the-hmt-project" name="the-hmt-project"></a></p>
+<h2 id="The-HMT-Project"><a href="#The-HMT-Project" class="headerlink" title="The HMT Project"></a>The HMT Project</h2><p>After working with different parts of the Math Tournament registration portal it was a pretty obvious move to integrate them under umbrella of a single web application capable of addressing the following tasks</p>
+<ul>
+<li>Integrate the existing web form with a permanent storage solution (database) so the registration data should no longer be handled and processed by hands</li>
+<li>Implement an ability for <strong>team sponsors</strong> to re-visit and correct their registrations </li>
+<li>Implement an ability for <strong>tournament organizers</strong> to retrieve any registration for the purposes of editing and marking as “paid”</li>
+<li>Automate the process of preparing Scantron sheets</li>
+<li>Integrate scanning, processing, and reporting activities so the scanned data could be automatically merged with registration data to generate various reports</li>
+<li>Implement archiving facility so the tournament results would be bound to particular year and could be retrived at will</li>
+<li>Implement automatic roll-over process so the application could be managed without direct manipulation with the program code (to setup dates, to clean up database, etc). </li>
+</ul>
+<p><a id="markdown-technology" name="technology"></a></p>
+<h3 id="Technology"><a href="#Technology" class="headerlink" title="Technology"></a>Technology</h3><p>I started the HMT project in the beginning of Fall 2017, and at that time, I already had some experience with full stack development using Node.js + MongoDB on the backend, and jQuery + Bootstrap on the frontend. I decided to make one step further and started learning Vue.js frontend framework in parallel. The following list shows technological skeleton of the HMT Project:</p>
+<ul>
+<li><strong>MongoDB + Mongoose</strong> to store user <em>registrations</em>, tournament <em>questions</em>, Scantron <em>scans</em> with answers, previous years <em>archives</em>, and some auxiliary data like tokens, timestamps, etc.</li>
+<li><strong>Express</strong> framework to handle API calls. The SPA nature of the app allowed offloading all page rendering to the frontend, so the only page rendered by Express was the <strong>About</strong> page (in support of SEO best practices).</li>
+<li><strong>Axios</strong> on both front- and backend sides as an HTTP client.</li>
+<li><strong>Bcrypt</strong> to hash and check passwords on the backend.</li>
+<li><strong>Nodemailer</strong> for e-mail delivery.</li>
+<li><strong>Socket.io</strong> for asynchronous communication with Scantron controller.</li>
+<li><strong>Vue.js</strong> as the main frontend framework with _vue_router_, <em>vuex</em>, <em>vue-recaptcha</em>, _vue_axios_ to name just a few supporting components.</li>
+<li><strong>Bootstrap 4</strong> for frontend styling. Actually I used a mixture of <strong>bootstrap-vue</strong> for vue-styled components, and pure <strong>bootstrap</strong> classes for precise tuning of the interface.</li>
+<li><strong>Webpack 3</strong> for frontend bundling. Majority of Webpack configurations I built by following <a href="https://leanpub.com/survivejs-webpack" target="_blank" rel="noopener">SurviveJS Webpack</a> guide by <em>Juho Vepsäläinen et al</em>.</li>
+<li><strong>Font awesome 5</strong> (free) for icons.</li>
+<li><strong>Google Web Fonts</strong> (Roboto mono) for interface styling.</li>
+<li><strong>jsPDF</strong> for generating PDF graphics printed directly on Scantron sheets.</li>
+</ul>
+<p><a id="markdown-urls-and-deployment" name="urls-and-deployment"></a></p>
+<h3 id="URLs-and-deployment"><a href="#URLs-and-deployment" class="headerlink" title="URLs and deployment"></a>URLs and deployment</h3><p>The live version of the HMT Project website is avaiulable at <a href="https://hmt.gswcm.net" target="_blank" rel="noopener">https://hmt.gswcm.net</a>. The registration is currently closed but tournament results can be observed at <a href="https://hmt.gswcm.net/stats" target="_blank" rel="noopener">https://hmt.gswcm.net/stats</a>.</p>
+<p>The GitHub project page is available at <a href="https://github.com/gswcm/hmt" target="_blank" rel="noopener">https://github.com/gswcm/hmt</a>.</p>
+<p>Deployment of the application should not face any bumps, but there are a number of issues that have to be carefully addressed:</p>
+<ul>
+<li>The project requires Node.js v8.x, MongoDB at least v2.6. </li>
+<li>The app is configured to be served by <strong>Nginx</strong> running as a reverse proxy server. The Nginx config file is available in <code>/configs/nginx</code>. The configuration assumes that repo either is cloned into <code>/var/www/app</code> or a symbolic link <code>/var/www/app</code> points to a real location of repo files. </li>
+<li>Registration form uses <a href="https://developers.google.com/recaptcha/docs/invisible" target="_blank" rel="noopener">Invisible reCAPTCHA</a> that requires <code>reCAPTCHA_KEY</code> and <code>reCAPTCHA_SECRET</code> environment variables set with values configured on <a href="http://www.google.com/recaptcha/admin" target="_blank" rel="noopener">http://www.google.com/recaptcha/admin</a> page.</li>
+<li>Emailing feature uses Amazon S3 storage to handle image delivery, so <code>S3_KEY</code> and <code>S3_SECRET</code> environment variables have to be set to store corresponding values for S3 bucket named <code>hmt.gswcm.net</code>. Bucket name can be modified in <code>./backend/lib/mailer.js</code> file.</li>
+<li>Emailing feature relies upon SMTP server that is currently configured as <code>smtp.gswcm.net</code> in <code>./backend/lib/mailer.js</code> file.  </li>
+<li>After installing <strong>Node</strong> and <strong>MongoDB</strong> server, cloning the GitHub repo, and setting up environment variables all dependencies can be installed in a straightforward manner by running <code>npm i</code></li>
+<li>The frontend bundle needs to be compiled every time after retrieving repo files from GitHub. It can be done by running <code>npm run build</code> from the repo directory.</li>
+<li>The app can be started in the <em>production</em> mode by running <code>node ./bin/www.js</code> or simply <code>nodemon</code> from the repo directory. </li>
+<li>The app can be started in the <em>development</em> mode by running <code>NODE_ENV=development nodemon</code> from the repo directory.</li>
+<li>Permanent installation of the app can be achieved, for instance, by using globally installed <code>pm2</code> NPM package and using it to create a form of startup script.</li>
+</ul>
+<p><a id="markdown-normal-user-workflow" name="normal-user-workflow"></a></p>
+<h3 id="Normal-user-workflow"><a href="#Normal-user-workflow" class="headerlink" title="Normal user workflow"></a>Normal user workflow</h3><p>A normal user (team sponsor) visits the landing page of the portal, i.e. <a href="https://hmt.gswcm.net" target="_blank" rel="noopener">https://hmt.gswcm.net</a> and, if the tournament date is set at least 1 days ahead, can proceed with creating a new or revising the previously made registration. Team sponsor is identified by e-mail address that has to be entered into the corresponding input field. Entering of an unrecognized e-mail address leads to displaying of an empty registration form. But if the entered e-mail address is found matching existing registration, the form would be populated with previously entered registration data. </p>
+<p>Form validation routines require clearing up all errors in order for the submission button to become enabled. The Invisible reCAPTCHA guards the form from spammers and other automated fillings/submissions.</p>
+<p>Once the form is completed and submitted, the registration is treated as <em>unconfirmed</em> or <em>pending</em> until after the sponsor would follow confirmation link from the automated e-mail. Should this happen within the grace period, the same registration info will become available for the last moment editing and final submission.</p>
+<p><strong>Important note</strong>: The registration process allows for unrestricted submission of registration info. All unconfirmed (pending) registrations expire in 1 day. The registration process is password-free. </p>
+<p><a id="markdown-admin-user-workflow" name="admin-user-workflow"></a></p>
+<h3 id="Admin-user-workflow"><a href="#Admin-user-workflow" class="headerlink" title="Admin user workflow"></a>Admin user workflow</h3><p><a id="markdown-admin-role" name="admin-role"></a></p>
+<h4 id="Admin-role"><a href="#Admin-role" class="headerlink" title="Admin role"></a>Admin role</h4><p>The <em>admin</em> role is hardcoded to map selected e-mail addresses and is defined in <code>./backend/lib/admins.js</code> file. The <em>admin</em> role is associated with <em>tournament organizer(s)</em>.</p>
+<p><a id="markdown-access-of-the-admin-interface" name="access-of-the-admin-interface"></a></p>
+<h4 id="Access-of-the-admin-interface"><a href="#Access-of-the-admin-interface" class="headerlink" title="Access of the admin interface"></a>Access of the admin interface</h4><p>The <em>admin</em> interface will be exposed to users listed as <em>admins</em> (see above) and accessing the registration portal at <code>/start</code> URL. Such users will be prompted to follow <code>/admin</code> link to access the actual <em>admin</em> interface. Alternatively, they can play the role of a <em>normal user</em> and continue with <em>normal user workflow</em> as discussed above.</p>
+<p><a id="markdown-authentication-mechanism" name="authentication-mechanism"></a></p>
+<h4 id="Authentication-mechanism"><a href="#Authentication-mechanism" class="headerlink" title="Authentication mechanism"></a>Authentication mechanism</h4><p>Access to the <em>admin</em> interface is restricted to <em>authenticated</em> users only. The <em>admin</em> membership defined in the <code>./backend/lib/admins.js</code> file sets a <em>necessary</em> but not a <em>sufficient</em> condition. The <em>admin</em> page available at <code>/admin</code> exposes two variants of the content matching <em>authorized</em>, and  <em>non-authorized</em> sessions. The <em>non-authorized</em> variant is present by default until after valid <em>admin credentials</em>, i.e. e-mail and password are entered. There is no <em>Submit</em>  button that can be clicked to initiate credential validation, instead, a mechanism relying on <code>lodash.debounce()</code> with a delay of 500 ms is used to counteract possible bruteforce attack. </p>
+<p>Having specified valid <em>admin credentials</em> a user exposed to the <em>authorized</em> version of the <em>admin</em> interface that is discussed in details in the next section. The prompt for entering email/password is no longer shown, and is replaced by the real content of the page. </p>
+<p>This application does not rely on HTTP sessions for authentication purposes. It is done on purpose, to explore the paradigm of the <em>stateless</em> backend &mdash; a better fit for scalable implementations. Every request sent from the <em>admin</em> interface to the <em>admin</em> API includes previously entered credentials that are validated prior performing requested <em>admin</em> task. This approach mimics <strong>JWT</strong> way of sending authentication data along with every request, but does not facilitate <em>digital signatures</em> for data integrity validation. </p>
+<p>It is worth stating that since credential data are passed to the backend with no encryption, the <strong>app has to be served using HTTPs protocol</strong> configured at the Nginx level. </p>
+<p><a id="markdown-admin-interface-features" name="admin-interface-features"></a></p>
+<h4 id="Admin-interface-features"><a href="#Admin-interface-features" class="headerlink" title="Admin interface features"></a>Admin interface features</h4><p>The <em>admin</em> interface features 5 tabs, each responsible for a particular set of tasks:</p>
+<ul>
+<li><p><strong>Records</strong> tab allows to work (add/delete/edit) with <em>team registrations</em>. Organizers can navigate through the collection of submitted registrations by means of setting up <strong>flexible filters</strong>. Any combination of the following criteria can be utilized to display a subset of all submitted registrations:</p>
+<ul>
+<li>Paid vs. non-Paid registration</li>
+<li>Substring seen in the sponsor’s e-mail address</li>
+<li>Substring seen in the sponsor’s name</li>
+<li>Substring seen in the School name</li>
+<li>School division (any given school belongs to a certain <em>division</em>)</li>
+<li>Whether or not the sponsor is also an admin </li>
+<li>Whether or not the registration has been confirmed via e-mail</li>
+</ul>
+<p>An exampled view of the <em>Records</em> tab is illustrated on this screenshot: <a href="http://nimb.ws/hR9p06" target="_blank" rel="noopener">http://nimb.ws/hR9p06</a>. </p>
+<p>On top of ability to display a subset of all registration records, this interface allows to work with individually <em>selected team</em>. More specifically, it is possible to</p>
+<ul>
+<li><em>confirm</em> a registration in case when (for some reasons) team sponsor did not receive a confirmation e-mail</li>
+<li><em>delete</em> a registration if one had been made by mistake or the team is no longer willing to participate in the tournament</li>
+<li><em>copy</em> e-mail address of the team sponsor to the clipboard and then use it to compose an e-mail</li>
+<li><em>download</em> a PDF file that needs to be printed on Scantron sheets for identification purposes</li>
+</ul>
+<p>The <em>download</em> action can be applied to the entire list of currently filtered teams, should admin needs to prepare a PDF, say for the entire division. </p>
+<p>The introduction of an ability to print student identification data directly on the Scantron sheets has significantly simplified the tournament preparation phase. In the past, organizers would have to print named labels and stick them onto each Scantron sheet. Moreover, specific IDs had to be <em>imprinted</em> (4 marks made by #2 pencil) by hands while leaving great opportunity for a typo or other kinds of mistakes. With the introduction of direct printing on Scantron sheets these problems no longer affect the preparation phase. </p>
+</li>
+<li><p><strong>Questions</strong> tab allows to edit <em>tournament questions</em>, which is to specify <em>category</em> and answer <em>key</em> for every given question. There are 40 questions ranging 5 different categories and allowing 5 possible answers with only one answer being considered as correct. </p>
+<p>An exampled view of the <em>Questions</em> tab is illustrated on this screenshot: <a href="http://nimb.ws/3j1nQJ" target="_blank" rel="noopener">http://nimb.ws/3j1nQJ</a></p>
+</li>
+<li><p><strong>Scantron</strong> tab allows to interact with <strong>Scantron controller</strong> discussed in the <a href="#pitron-mdash-scantron-driven-by-raspi">dedicated section of this document</a> below. Also it allows to edit a set of scan records currently stored in the database. Taking into account the possibility of submitting duplicated scan records, the interface introduces 2 ways of uploading scan data to the database: </p>
+<ul>
+<li>Submit the data while <em>skipping</em> duplicates</li>
+<li>Submit the data while <em>overriding</em> duplicates</li>
+</ul>
+<p>An exampled view of the <em>Scantron</em> tab is illustrated on this screenshot: <a href="http://nimb.ws/L1SoPF" target="_blank" rel="noopener">http://nimb.ws/L1SoPF</a></p>
+</li>
+<li><p><strong>Results</strong> tab mimics presentation of the <strong>Results</strong> page available at <code>/stats</code> while adding a number of extra features</p>
+<ul>
+<li>Tournament results processing <strong>log</strong> that includes information on <em>processing errors</em> and a list of <em>no show</em> students. The <em>no show</em> list can be filtered with respect to <em>student id</em> or <em>student name</em>.</li>
+<li>Ability to augment tournament results by associating “ciphering total” value assigned to each team on the basis of team-level competition. </li>
+</ul>
+<p>An exampled view of the <em>Results</em> tab is illustrated on this screenshot: <a href="http://nimb.ws/6ivMpb" target="_blank" rel="noopener">http://nimb.ws/6ivMpb</a></p>
+</li>
+<li><p><strong>Maintenance</strong> tab alows to perform various maintenance tasks like removing stale (unused) accounts, re-shaping collection of team registrations, rolling over the application for the next year tournament, and setting up date of the tournament event that affects appearance of many portal components. </p>
+<p>An exampled view of the <em>Maintenance</em> tab is illustrated on this screenshot: <a href="http://nimb.ws/MnxCa1" target="_blank" rel="noopener">http://nimb.ws/MnxCa1</a></p>
+</li>
+</ul>
+<p><a id="markdown-responsive-design" name="responsive-design"></a></p>
+<h3 id="Responsive-design"><a href="#Responsive-design" class="headerlink" title="Responsive design"></a>Responsive design</h3><p>The portal is designed to respect various devices ranging from a tiny screen of <em>iPhone 5</em> to extra large screen of a modern desktop computer. All heavy lifting is implemented by utilizing various layout classes of Bootstrap 4. Here are a few examples of how <em>admin</em> UI is modeled to look on iPhone 7:</p>
+<ul>
+<li>Records tab <a href="http://nimb.ws/50Zjvx" target="_blank" rel="noopener">http://nimb.ws/50Zjvx</a></li>
+<li>Results tab <a href="http://nimb.ws/8VPgQI" target="_blank" rel="noopener">http://nimb.ws/8VPgQI</a></li>
+</ul>
+<p><a id="markdown-known-issues" name="known-issues"></a></p>
+<h3 id="Known-issues"><a href="#Known-issues" class="headerlink" title="Known issues"></a>Known issues</h3><p>And last but not least, this project is known to have a number of issues summarized below:</p>
+<ul>
+<li>A number of frontend parameters including just entered <em>admin credentials</em> are stored in the <code>vuex</code> store. This information is considered to be protected by <code>vuex</code> mechanisms as long the session is active, but in some situations this information can (I presume) be hijacked from the store upon session completion. </li>
+<li>The e-mail feature is not configured to use any means of encryption.</li>
+<li>Various filters on <em>records</em> tab of the <em>admin</em> interface have never been tested against possible injection.</li>
+<li>Connection to MongoDB server is not protected. As long as the MongoDB server is hosted alongside with the app, it is not a big deal, but this issue needs to be fixed to prepare the project for in-cloud deployment.</li>
+<li>Formal unit tests have yet to be developed.</li>
+</ul>
+<p><a id="markdown-pitron-mdash-scantron-driven-by-raspi" name="pitron-mdash-scantron-driven-by-raspi"></a></p>
+<h2 id="piTron-mdash-Scantron-driven-by-RasPi"><a href="#piTron-mdash-Scantron-driven-by-RasPi" class="headerlink" title="piTron &mdash; Scantron driven by RasPi"></a>piTron &mdash; Scantron driven by RasPi</h2><p>The <strong>HMT Project</strong> wouldn’t be complete without ability to automate scanning process. While working on HMT portal I hoped to re-use the previously developed Scantron controller (see <a href="#year-2">above</a>) after minor adjustment… but that was not going to happen. I couldn’t accept my own code styling, classes organization, pretty much everything except the core implementation of the controller logic. Moreover, the <code>serialport</code> project has evolved from v4 to v6 and many things that my implementation relied upon became non-functional. </p>
+<p>I decided to rework the entire piTron project to have </p>
+<ul>
+<li>latest Node, SerialPort, Express on the backend</li>
+<li>Vue + Bootstrap bundled by Webpack on the frontend</li>
+<li>Socket.io for all asynchronous communications, including delivery of scanned data to the HMT portal. </li>
+</ul>
+<p>The renewed piTron also featured <strong>Scantron Simulator</strong> &mdash; yet another SerialPort based JS class mimicing lifecycles of a real Scantron. Having both <strong>piTron</strong> and <strong>Scantron Simulator</strong>  connected on the hardware level (GND-GND, Tx-Rx, Rx-Tx) I managed to debug piTron logic and its UI without running actual scans. </p>
+<p>The piTron project has its own GitHub repo available at <a href="https://github.com/gswcm/pitron" target="_blank" rel="noopener">https://github.com/gswcm/pitron</a>.</p>
+<p>The following video demonstrates <strong>piTron + HMT</strong> bundle in action.</p>
+<div class="embed-responsive embed-responsive-16by9"><br>    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/udKcM9PIrSc?ecver=2" allow="autoplay; encrypted-media" allowfullscreen></iframe><br></div>
+</div><script src="/js/service-worker-registration.js"></script><script src="///code.jquery.com/jquery-3.2.1.slim.min.js"></script><script src="///maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script><script defer="" src="///use.fontawesome.com/releases/v5.0.7/js/all.js"></script><script>window.addEventListener("hashchange", function() { scrollBy(0, -65) })</script><script>$(document).ready(() => {
+	$(`.nav-item-project`).addClass('active');
+})</script></body></html>

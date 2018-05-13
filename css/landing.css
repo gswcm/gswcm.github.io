@@ -1,0 +1,44 @@
+.title {
+	z-index: 10;
+	position: relative;
+	left: 15vw;
+	top: 15vh;
+}
+@media screen and (orientation:portrait) {
+	@media (max-width: 400px) {
+		.title > h1 {
+			font-size: 1.5rem;
+		}
+		.title > h4 {
+			font-size: 0.9rem;
+		}
+	}
+}
+
+@media screen and (orientation:landscape) {
+	.title {
+		left: 10vw;
+		top: 20vh;
+	}
+}
+
+@media (min-aspect-ratio: 16/10) and (max-width: 900px) {
+	.title {
+		left: 10vw;
+		top: 5vh;
+	}
+	.title > h1 {
+		font-size: 1.5rem;
+	}
+	.title > h4 {
+		font-size: 0.9rem;
+	}
+}
+
+.banner {
+	z-index: 0;
+}
+
+h1,h2,h3,h4 {
+	font-family: 'Open Sans Condensed', sans-serif;
+}
