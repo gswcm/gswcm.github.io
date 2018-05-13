@@ -21,6 +21,6 @@ input:checked + .content {
 		display: block !important;
 	}
 	.references {
-		page-break-before: always;
+		page-break-before: always !important;
 	}
 }
