@@ -52,7 +52,7 @@ self.__precacheManifest = [
   },
   {
     "url": "covers/Kabbage.html",
-    "revision": "184b64028c584d7c3787521a5b58a75f"
+    "revision": "08a40ded70195616071294ff0e4030c1"
   },
   {
     "url": "covers/OneRockwell.html",
