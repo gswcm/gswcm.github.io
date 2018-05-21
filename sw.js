@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "covers/doodley/index.html",
-    "revision": "41e454c400038599fd485b74df67e80a"
+    "revision": "93edf041daf8ae40ec19addfd7d169a9"
   },
   {
     "url": "covers/Esri.html",
@@ -49,6 +49,10 @@ self.__precacheManifest = [
   {
     "url": "covers/IMM.html",
     "revision": "1b70870a80a2499debe4f78882ce631b"
+  },
+  {
+    "url": "covers/Kabbage.html",
+    "revision": "184b64028c584d7c3787521a5b58a75f"
   },
   {
     "url": "covers/OneRockwell.html",
@@ -60,7 +64,7 @@ self.__precacheManifest = [
   },
   {
     "url": "cv/index.html",
-    "revision": "c5337ac1528ae5a29cb3ac426c414736"
+    "revision": "cecc5c2b41896504b990d5a20e3bbd69"
   },
   {
     "url": "index.html",
